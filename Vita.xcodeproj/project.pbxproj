@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D958A92A24E1AF3A00F42EAF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D958A92924E1AF3A00F42EAF /* main.cpp */; };
+		D958A93324E1B09900F42EAF /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D958A93124E1AF9100F42EAF /* SDL2.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D958A93424E1B09900F42EAF /* SDL2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D958A93124E1AF9100F42EAF /* SDL2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D9C4046224E5DA0600B71481 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9C4046124E5DA0600B71481 /* SDL2_image.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -20,11 +23,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		D958A93524E1B09900F42EAF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D958A93424E1B09900F42EAF /* SDL2.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D958A92624E1AF3A00F42EAF /* Vita */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Vita; sourceTree = BUILT_PRODUCTS_DIR; };
 		D958A92924E1AF3A00F42EAF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D958A93124E1AF9100F42EAF /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		D958A93624E1BE5F00F42EAF /* imgui-docking */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "imgui-docking"; sourceTree = "<group>"; };
+		D9C4046124E5DA0600B71481 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9C4046224E5DA0600B71481 /* SDL2_image.framework in Frameworks */,
+				D958A93324E1B09900F42EAF /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,8 +60,10 @@
 		D958A91D24E1AF3A00F42EAF = {
 			isa = PBXGroup;
 			children = (
+				D958A93624E1BE5F00F42EAF /* imgui-docking */,
 				D958A92824E1AF3A00F42EAF /* Vita */,
 				D958A92724E1AF3A00F42EAF /* Products */,
+				D958A93024E1AF9100F42EAF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +83,15 @@
 			path = Vita;
 			sourceTree = "<group>";
 		};
+		D958A93024E1AF9100F42EAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D9C4046124E5DA0600B71481 /* SDL2_image.framework */,
+				D958A93124E1AF9100F42EAF /* SDL2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -72,6 +102,7 @@
 				D958A92224E1AF3A00F42EAF /* Sources */,
 				D958A92324E1AF3A00F42EAF /* Frameworks */,
 				D958A92424E1AF3A00F42EAF /* CopyFiles */,
+				D958A93524E1B09900F42EAF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,6 +270,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					/Library/Frameworks/SDL2_image.framework/Headers,
+					/Library/Frameworks/SDL2.framework/Headers,
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					SDL2,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -247,6 +290,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					/Library/Frameworks/SDL2_image.framework/Headers,
+					/Library/Frameworks/SDL2.framework/Headers,
+				);
+				OTHER_LDFLAGS = (
+					"-framework",
+					SDL2,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
